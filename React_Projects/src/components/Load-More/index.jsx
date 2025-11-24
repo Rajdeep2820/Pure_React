@@ -10,8 +10,7 @@ export default function LoadMore(){
    async function fetchProducts(){
     try {
         setLoading(true);
-        const response = await fetch(`https://dummyjson.com/products?limit=20&skip=${count === 0 ? 0 : count * 20}`
-     );
+        const response = await fetch(`https://dummyjson.com/products?limit=4&skip=${count === 0 ? 0 : count * 4}` );
      const result = await response.json();
 
      if(result && result.products && result.products.length){
@@ -21,7 +20,10 @@ export default function LoadMore(){
      console.log(result);
     }  catch(e){
         console.log(e);
-     } setLoading(false)
+     } finally 
+     {
+        setLoading(false)
+    }
     }
 
     useEffect(()=>{
